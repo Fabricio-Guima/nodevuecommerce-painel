@@ -1,0 +1,401 @@
+<template>
+  <nav
+    class="navbar navbar-vertical navbar-light fixed-start navbar-expand-md"
+    id="sidebar"
+  >
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse"
+        aria-controls="sidebarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="./index.html">
+        <img
+          src="assets/img/logo.svg"
+          class="navbar-brand-img mx-auto"
+          alt="..."
+        />
+      </a>
+
+      <!-- User (xs) -->
+      <div class="navbar-user d-md-none">
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <!-- Toggle -->
+          <a
+            href="#"
+            id="sidebarIcon"
+            class="dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="avatar avatar-sm avatar-online">
+              <img
+                src="assets/img/avatars/profiles/avatar-1.jpg"
+                class="avatar-img rounded-circle"
+                alt="..."
+              />
+            </div>
+          </a>
+
+          <!-- Menu -->
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="sidebarIcon"
+          >
+            <a href="./profile-posts.html" class="dropdown-item">Profile</a>
+            <a href="./account-general.html" class="dropdown-item">Settings</a>
+            <hr class="dropdown-divider" />
+            <a href="./sign-in.html" class="dropdown-item">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidebarCollapse">
+        <!-- Form -->
+        <form class="mt-4 mb-3 d-md-none">
+          <div
+            class="input-group input-group-rounded input-group-merge input-group-reverse"
+          >
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <div class="input-group-text">
+              <span class="fe fe-search"></span>
+            </div>
+          </div>
+        </form>
+
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#sidebarDashboards"
+              data-bs-toggle="collapse"
+              role="button"
+              aria-expanded="true"
+              aria-controls="sidebarDashboards"
+            >
+              <i class="fe fe-home"></i> Dashboards
+            </a>
+            <div class="collapse show" id="sidebarDashboards">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a href="./index.html" class="nav-link active"> Default </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="./dashboard-project-management.html"
+                    class="nav-link"
+                  >
+                    Project Management
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./dashboard-ecommerce.html" class="nav-link">
+                    E-Commerce
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./widgets.html">
+              <i class="fe fe-grid"></i> Widgets
+            </a>
+          </li>
+        </ul>
+
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-4">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#sidebarBasics"
+              data-bs-toggle="collapse"
+              role="button"
+              aria-expanded="false"
+              aria-controls="sidebarBasics"
+            >
+              <i class="fe fe-clipboard"></i> Basics
+            </a>
+            <div class="collapse" id="sidebarBasics">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a href="./docs/getting-started.html" class="nav-link">
+                    Getting Started
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./docs/design-file.html" class="nav-link">
+                    Design File
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#sidebarComponents"
+              data-bs-toggle="collapse"
+              role="button"
+              aria-expanded="false"
+              aria-controls="sidebarComponents"
+            >
+              <i class="fe fe-book-open"></i> Components
+            </a>
+            <div class="collapse" id="sidebarComponents">
+              <ul class="nav nav-sm flex-column">
+                <li>
+                  <a href="./docs/components.html#alerts" class="nav-link">
+                    Alerts
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#autosize" class="nav-link">
+                    Autosize
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#avatars" class="nav-link">
+                    Avatars
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#badges" class="nav-link">
+                    Badges
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#breadcrumb" class="nav-link">
+                    Breadcrumb
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#buttons" class="nav-link">
+                    Buttons
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#buttonGroup" class="nav-link">
+                    Button group
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#cards" class="nav-link">
+                    Cards
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#charts" class="nav-link">
+                    Charts
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#checklist" class="nav-link">
+                    Checklist
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#dropdowns" class="nav-link">
+                    Dropdowns
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#forms" class="nav-link">
+                    Forms
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#icons" class="nav-link">
+                    Icons
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#kanban" class="nav-link">
+                    Kanban
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#lists" class="nav-link">
+                    Lists
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#map" class="nav-link">
+                    Map
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#modals" class="nav-link">
+                    Modal
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#navs" class="nav-link">
+                    Navs
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#navbarDocs" class="nav-link">
+                    Navbar
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#pageHeaders" class="nav-link">
+                    Page headers
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#pagination" class="nav-link">
+                    Pagination
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#popovers" class="nav-link">
+                    Popovers
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#progress" class="nav-link">
+                    Progress
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#socialPosts" class="nav-link">
+                    Social post
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#spinners" class="nav-link">
+                    Spinners
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#tables" class="nav-link">
+                    Tables
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#toasts" class="nav-link">
+                    Toasts
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#tooltips" class="nav-link">
+                    Tooltips
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#typography" class="nav-link">
+                    Typography
+                  </a>
+                </li>
+                <li>
+                  <a href="./docs/components.html#utilities" class="nav-link">
+                    Utilities
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docs/changelog.html">
+              <i class="fe fe-git-branch"></i> Changelog
+              <span class="badge bg-primary ms-auto">v2.1.0</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Push content down -->
+        <div class="mt-auto"></div>
+
+        <!-- User (md) -->
+        <div class="navbar-user d-none d-md-flex" id="sidebarUser">
+          <!-- Icon -->
+          <a
+            class="navbar-user-link"
+            data-bs-toggle="offcanvas"
+            href="#sidebarOffcanvasActivity"
+            aria-controls="sidebarOffcanvasActivity"
+          >
+            <span class="icon">
+              <i class="fe fe-bell"></i>
+            </span>
+          </a>
+
+          <!-- Dropup -->
+          <div class="dropup">
+            <!-- Toggle -->
+            <a
+              href="#"
+              id="sidebarIconCopy"
+              class="dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <div class="avatar avatar-sm avatar-online">
+                <img
+                  src="assets/img/avatars/profiles/avatar-1.jpg"
+                  class="avatar-img rounded-circle"
+                  alt="..."
+                />
+              </div>
+            </a>
+
+            <!-- Menu -->
+            <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
+              <a href="./profile-posts.html" class="dropdown-item">Profile</a>
+              <a href="./account-general.html" class="dropdown-item"
+                >Settings</a
+              >
+              <hr class="dropdown-divider" />
+              <a href="./sign-in.html" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+
+          <!-- Icon -->
+          <a
+            class="navbar-user-link"
+            data-bs-toggle="offcanvas"
+            href="#sidebarOffcanvasSearch"
+            aria-controls="sidebarOffcanvasSearch"
+          >
+            <span class="icon">
+              <i class="fe fe-search"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- / .navbar-collapse -->
+    </div>
+  </nav>
+</template>
+
+<script>
+export default {
+  name: 'Sidebar',
+}
+</script>
+
+<style></style>
