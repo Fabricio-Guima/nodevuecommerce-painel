@@ -132,53 +132,25 @@
                         <tr>
                           <th>
                             <a class="list-sort text-muted" data-sort="item-name" href="#"
-                              >Name</a
+                              >Nomes</a
                             >
                           </th>
                           <th>
-                            <a
-                              class="list-sort text-muted"
-                              data-sort="item-title"
-                              href="#"
-                              >Job title</a
-                            >
+                            <a class="list-sort text-muted">Cargo</a>
                           </th>
                           <th>
-                            <a
-                              class="list-sort text-muted"
-                              data-sort="item-email"
-                              href="#"
-                              >Email</a
-                            >
+                            <a class="list-sort text-muted">Email</a>
                           </th>
                           <th>
-                            <a
-                              class="list-sort text-muted"
-                              data-sort="item-phone"
-                              href="#"
-                              >Phone</a
-                            >
-                          </th>
-                          <th>
-                            <a
-                              class="list-sort text-muted"
-                              data-sort="item-score"
-                              href="#"
-                              >Lead score</a
-                            >
+                            <a class="list-sort text-muted">Status</a>
                           </th>
                           <th colspan="2">
-                            <a
-                              class="list-sort text-muted"
-                              data-sort="item-company"
-                              href="#"
-                              >Company</a
-                            >
+                            <a class="list-sort text-muted">Ações</a>
                           </th>
                         </tr>
                       </thead>
                       <tbody class="list fs-base">
-                        <tr>
+                        <tr v-for="(user, index) in users" :key="index">
                           <td>
                             <!-- Avatar -->
                             <div class="avatar avatar-xs align-middle me-2">
@@ -189,102 +161,32 @@
                               />
                             </div>
                             <a class="item-name text-reset" href="profile-posts.html"
-                              >Dianna Smiley</a
+                              >{{ user.name }} {{ user.nickname }}</a
                             >
                           </td>
                           <td>
                             <!-- Text -->
-                            <span class="item-title">Designer</span>
+                            <span class="item-title">{{ user.role }}</span>
                           </td>
                           <td>
                             <!-- Email -->
-                            <a
-                              class="item-email text-reset"
-                              href="mailto:john.doe@company.com"
-                              >diana.smiley@company.com</a
+                            <a class="item-email text-reset">{{ user.email }}</a>
+                          </td>
+
+                          <td>
+                            <!-- status -->
+                            <span
+                              v-if="!user.status"
+                              class="item-score badge bg-danger-soft"
+                              >Desativado</span
+                            >
+                            <span
+                              v-if="user.status"
+                              class="item-score badge bg-success-soft"
+                              >Ativado</span
                             >
                           </td>
-                          <td>
-                            <!-- Phone -->
-                            <a class="item-phone text-reset" href="tel:1-123-456-4890"
-                              >(988) 568-3568</a
-                            >
-                          </td>
-                          <td>
-                            <!-- Badge -->
-                            <span class="item-score badge bg-danger-soft">1/10</span>
-                          </td>
-                          <td>
-                            <!-- Link -->
-                            <a class="item-company text-reset" href="team-overview.html"
-                              >Twitter</a
-                            >
-                          </td>
-                          <td class="text-end">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <a
-                                class="dropdown-ellipses dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="fe fe-more-vertical"></i>
-                              </a>
-                              <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#!" class="dropdown-item"> Action </a>
-                                <a href="#!" class="dropdown-item"> Another action </a>
-                                <a href="#!" class="dropdown-item">
-                                  Something else here
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xs align-middle me-2">
-                              <img
-                                class="avatar-img rounded-circle"
-                                src="assets/img/avatars/profiles/avatar-2.jpg"
-                                alt="..."
-                              />
-                            </div>
-                            <a class="item-name text-reset" href="profile-posts.html"
-                              >Ab Hadley</a
-                            >
-                          </td>
-                          <td class="">
-                            <!-- Text -->
-                            <span class="item-title">Developer</span>
-                          </td>
-                          <td>
-                            <!-- Email -->
-                            <a
-                              class="item-email text-reset"
-                              href="mailto:john.doe@company.com"
-                              >ab.hadley@company.com</a
-                            >
-                          </td>
-                          <td>
-                            <!-- Phone -->
-                            <a class="item-phone text-reset" href="tel:1-123-456-7890"
-                              >(650) 430-9876</a
-                            >
-                          </td>
-                          <td>
-                            <!-- Badge -->
-                            <span class="item-score badge bg-success-soft">8/10</span>
-                          </td>
-                          <td>
-                            <!-- Link -->
-                            <a class="item-company text-reset" href="team-overview.html"
-                              >Google</a
-                            >
-                          </td>
+
                           <td class="text-end">
                             <!-- Dropdown -->
                             <div class="dropdown">
@@ -396,7 +298,37 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      users: [],
+      spinner: {
+        loading: false,
+      },
+    };
+  },
+  methods: {
+    async getAllUsers() {
+      this.$axios
+        .get('/api/users')
+        .then((response) => {
+          console.log('users', response.data);
+          this.users = response.data;
+        })
+        .catch((error) => {
+          this.$toasted.error(error.message, {
+            class: 'toasting',
+          });
+        })
+        .finally(() => {
+          this.spinner.loading = false;
+        });
+    },
+  },
+  created() {
+    this.getAllUsers();
+  },
+};
 </script>
 
 <style></style>
