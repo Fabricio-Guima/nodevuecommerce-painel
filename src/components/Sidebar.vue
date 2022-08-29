@@ -19,11 +19,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="./index.html">
-        <img
-          src="assets/img/logo.svg"
-          class="navbar-brand-img mx-auto"
-          alt="..."
-        />
+        <img src="/assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="..." />
       </a>
 
       <!-- User (xs) -->
@@ -42,18 +38,16 @@
           >
             <div class="avatar avatar-sm avatar-online">
               <img
-                src="assets/img/avatars/profiles/avatar-1.jpg"
+                src="/assets/img/avatar-1.jpg"
                 class="avatar-img rounded-circle"
                 alt="..."
+                style="webkit-mask-image: none"
               />
             </div>
           </a>
 
           <!-- Menu -->
-          <div
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="sidebarIcon"
-          >
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarIcon">
             <a href="./profile-posts.html" class="dropdown-item">Profile</a>
             <a href="./account-general.html" class="dropdown-item">Settings</a>
             <hr class="dropdown-divider" />
@@ -100,28 +94,359 @@
                   <a href="./index.html" class="nav-link active"> Default </a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    href="./dashboard-project-management.html"
-                    class="nav-link"
-                  >
+                  <a href="./dashboard-project-management.html" class="nav-link">
                     Project Management
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./dashboard-ecommerce.html" class="nav-link">
-                    E-Commerce
-                  </a>
+                  <a href="./dashboard-ecommerce.html" class="nav-link"> E-Commerce </a>
                 </li>
               </ul>
             </div>
           </li>
-
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#sidebarPages"
+              data-bs-toggle="collapse"
+              role="button"
+              aria-expanded="false"
+              aria-controls="sidebarPages"
+            >
+              <i class="fe fe-file"></i> Pages
+            </a>
+            <div class="collapse" id="sidebarPages">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a
+                    href="#sidebarAccount"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarAccount"
+                  >
+                    Account
+                  </a>
+                  <div class="collapse" id="sidebarAccount">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./account-general.html" class="nav-link"> General </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./account-billing.html" class="nav-link"> Billing </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./account-members.html" class="nav-link"> Members </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./account-security.html" class="nav-link"> Security </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./account-notifications.html" class="nav-link">
+                          Notifications
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarCrm"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarCrm"
+                  >
+                    CRM
+                  </a>
+                  <div class="collapse" id="sidebarCrm">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./crm-contacts.html" class="nav-link"> Contacts </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./crm-companies.html" class="nav-link"> Companies </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./crm-deals.html" class="nav-link"> Deals </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarProfile"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarProfile"
+                  >
+                    Profile
+                  </a>
+                  <div class="collapse" id="sidebarProfile">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./profile-posts.html" class="nav-link"> Posts </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./profile-groups.html" class="nav-link"> Groups </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./profile-projects.html" class="nav-link"> Projects </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./profile-files.html" class="nav-link"> Files </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./profile-subscribers.html" class="nav-link">
+                          Subscribers
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarProject"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarProject"
+                  >
+                    Project
+                  </a>
+                  <div class="collapse" id="sidebarProject">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./project-overview.html" class="nav-link"> Overview </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./project-files.html" class="nav-link"> Files </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./project-reports.html" class="nav-link"> Reports </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./project-new.html" class="nav-link"> New project </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarTeam"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarTeam"
+                  >
+                    Team
+                  </a>
+                  <div class="collapse" id="sidebarTeam">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./team-overview.html" class="nav-link"> Overview </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./team-projects.html" class="nav-link"> Projects </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./team-members.html" class="nav-link"> Members </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./team-new.html" class="nav-link"> New team </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarFeed"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarFeed"
+                  >
+                    Feed
+                  </a>
+                  <div class="collapse" id="sidebarFeed">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./feed.html" class="nav-link"> Platform </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./social-feed.html" class="nav-link"> Social </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a href="./wizard.html" class="nav-link"> Wizard </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./kanban.html" class="nav-link"> Kanban </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./orders.html" class="nav-link"> Orders </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./invoice.html" class="nav-link"> Invoice </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./pricing.html" class="nav-link"> Pricing </a>
+                </li>
+              </ul>
+            </div>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="./widgets.html">
               <i class="fe fe-grid"></i> Widgets
             </a>
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#sidebarAuth"
+              data-bs-toggle="collapse"
+              role="button"
+              aria-expanded="false"
+              aria-controls="sidebarAuth"
+            >
+              <i class="fe fe-user"></i> Authentication
+            </a>
+            <div class="collapse" id="sidebarAuth">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a
+                    href="#sidebarSignIn"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarSignIn"
+                  >
+                    Sign in
+                  </a>
+                  <div class="collapse" id="sidebarSignIn">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./sign-in-cover.html" class="nav-link"> Cover </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./sign-in-illustration.html" class="nav-link">
+                          Illustration
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./sign-in.html" class="nav-link"> Basic </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarSignUp"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarSignUp"
+                  >
+                    Sign up
+                  </a>
+                  <div class="collapse" id="sidebarSignUp">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./sign-up-cover.html" class="nav-link"> Cover </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./sign-up-illustration.html" class="nav-link">
+                          Illustration
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./sign-up.html" class="nav-link"> Basic </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarPassword"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarPassword"
+                  >
+                    Password reset
+                  </a>
+                  <div class="collapse" id="sidebarPassword">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./password-reset-cover.html" class="nav-link"> Cover </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./password-reset-illustration.html" class="nav-link">
+                          Illustration
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./password-reset.html" class="nav-link"> Basic </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#sidebarError"
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="sidebarError"
+                  >
+                    Error
+                  </a>
+                  <div class="collapse" id="sidebarError">
+                    <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a href="./error-illustration.html" class="nav-link">
+                          Illustration
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./error.html" class="nav-link"> Basic </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item d-md-none">
+            <a
+              class="nav-link"
+              data-bs-toggle="offcanvas"
+              href="#sidebarOffcanvasActivity"
+              aria-contrtols="sidebarOffcanvasActivity"
+            >
+              <span class="fe fe-bell"></span> Notifications
+            </a>
+          </li>
         </ul>
+
+        <!-- Divider -->
+        <hr class="navbar-divider my-3" />
+
+        <!-- Heading -->
+        <h6 class="navbar-heading">Documentation</h6>
 
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-4">
@@ -144,9 +469,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./docs/design-file.html" class="nav-link">
-                    Design File
-                  </a>
+                  <a href="./docs/design-file.html" class="nav-link"> Design File </a>
                 </li>
               </ul>
             </div>
@@ -165,9 +488,7 @@
             <div class="collapse" id="sidebarComponents">
               <ul class="nav nav-sm flex-column">
                 <li>
-                  <a href="./docs/components.html#alerts" class="nav-link">
-                    Alerts
-                  </a>
+                  <a href="./docs/components.html#alerts" class="nav-link"> Alerts </a>
                 </li>
                 <li>
                   <a href="./docs/components.html#autosize" class="nav-link">
@@ -175,14 +496,10 @@
                   </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#avatars" class="nav-link">
-                    Avatars
-                  </a>
+                  <a href="./docs/components.html#avatars" class="nav-link"> Avatars </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#badges" class="nav-link">
-                    Badges
-                  </a>
+                  <a href="./docs/components.html#badges" class="nav-link"> Badges </a>
                 </li>
                 <li>
                   <a href="./docs/components.html#breadcrumb" class="nav-link">
@@ -190,9 +507,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#buttons" class="nav-link">
-                    Buttons
-                  </a>
+                  <a href="./docs/components.html#buttons" class="nav-link"> Buttons </a>
                 </li>
                 <li>
                   <a href="./docs/components.html#buttonGroup" class="nav-link">
@@ -200,14 +515,10 @@
                   </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#cards" class="nav-link">
-                    Cards
-                  </a>
+                  <a href="./docs/components.html#cards" class="nav-link"> Cards </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#charts" class="nav-link">
-                    Charts
-                  </a>
+                  <a href="./docs/components.html#charts" class="nav-link"> Charts </a>
                 </li>
                 <li>
                   <a href="./docs/components.html#checklist" class="nav-link">
@@ -220,39 +531,25 @@
                   </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#forms" class="nav-link">
-                    Forms
-                  </a>
+                  <a href="./docs/components.html#forms" class="nav-link"> Forms </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#icons" class="nav-link">
-                    Icons
-                  </a>
+                  <a href="./docs/components.html#icons" class="nav-link"> Icons </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#kanban" class="nav-link">
-                    Kanban
-                  </a>
+                  <a href="./docs/components.html#kanban" class="nav-link"> Kanban </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#lists" class="nav-link">
-                    Lists
-                  </a>
+                  <a href="./docs/components.html#lists" class="nav-link"> Lists </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#map" class="nav-link">
-                    Map
-                  </a>
+                  <a href="./docs/components.html#map" class="nav-link"> Map </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#modals" class="nav-link">
-                    Modal
-                  </a>
+                  <a href="./docs/components.html#modals" class="nav-link"> Modal </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#navs" class="nav-link">
-                    Navs
-                  </a>
+                  <a href="./docs/components.html#navs" class="nav-link"> Navs </a>
                 </li>
                 <li>
                   <a href="./docs/components.html#navbarDocs" class="nav-link">
@@ -290,14 +587,10 @@
                   </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#tables" class="nav-link">
-                    Tables
-                  </a>
+                  <a href="./docs/components.html#tables" class="nav-link"> Tables </a>
                 </li>
                 <li>
-                  <a href="./docs/components.html#toasts" class="nav-link">
-                    Toasts
-                  </a>
+                  <a href="./docs/components.html#toasts" class="nav-link"> Toasts </a>
                 </li>
                 <li>
                   <a href="./docs/components.html#tooltips" class="nav-link">
@@ -328,6 +621,23 @@
         <!-- Push content down -->
         <div class="mt-auto"></div>
 
+        <!-- Customize -->
+        <div
+          class="mb-4"
+          id="popoverDemo"
+          title="Make Dashkit Your Own!"
+          data-bs-content="Switch the demo to Dark Mode or adjust the navigation layout, icons, and colors!"
+        >
+          <a
+            class="btn w-100 btn-primary"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasDemo"
+            aria-controls="offcanvasDemo"
+          >
+            <i class="fe fe-sliders me-2"></i> Customize
+          </a>
+        </div>
+
         <!-- User (md) -->
         <div class="navbar-user d-none d-md-flex" id="sidebarUser">
           <!-- Icon -->
@@ -356,9 +666,10 @@
             >
               <div class="avatar avatar-sm avatar-online">
                 <img
-                  src="assets/img/avatars/profiles/avatar-1.jpg"
+                  src="/assets/img/avatar-1.jpg"
                   class="avatar-img rounded-circle"
                   alt="..."
+                  style="webkit-mask-image: none"
                 />
               </div>
             </a>
@@ -366,9 +677,7 @@
             <!-- Menu -->
             <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
               <a href="./profile-posts.html" class="dropdown-item">Profile</a>
-              <a href="./account-general.html" class="dropdown-item"
-                >Settings</a
-              >
+              <a href="./account-general.html" class="dropdown-item">Settings</a>
               <hr class="dropdown-divider" />
               <a href="./sign-in.html" class="dropdown-item">Logout</a>
             </div>
@@ -395,7 +704,7 @@
 <script>
 export default {
   name: 'Sidebar',
-}
+};
 </script>
 
 <style></style>

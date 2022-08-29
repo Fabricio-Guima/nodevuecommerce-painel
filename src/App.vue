@@ -1,24 +1,19 @@
 <template>
   <div id="app">
-    <SidebarVue />
     <router-view />
   </div>
 </template>
 
 <script>
-import SidebarVue from './components/Sidebar.vue'
-
-export default {
-  components: { SidebarVue },
-}
+export default {};
 </script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  height: 100vh !important;
 }
 a {
   color: #6e84a3 !important;

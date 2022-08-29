@@ -13,7 +13,7 @@
       type="image/x-icon"
     />
 
-    Map CSS
+    <!-- Map CSS -->
     <link
       rel="stylesheet"
       href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
@@ -28,11 +28,21 @@
       href="<%= BASE_URL %>assets/css/theme.bundle.css"
       id="stylesheetLight"
     />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="<%= BASE_URL %>assets/css/theme-dark.bundle.css"
       id="stylesheetDark"
-    />
+    /> -->
+
+    <style>
+      @font-face {
+        font-family: 'cerebrisans';
+        src: url('<%= BASE_URL %>assets/fonts/cerebrisans/cerebrisans-regular.woff');
+      }
+      * {
+        font-family: 'cerebrisans';
+      }
+    </style>
 
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>

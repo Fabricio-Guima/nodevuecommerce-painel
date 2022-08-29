@@ -3,10 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import '@/plugins/vee-validate'
+import '@/plugins/axios'
+
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: function (h) { return h(App) }
+  render: function (h) {
+    return h(App)
+  },
 }).$mount('#app')
