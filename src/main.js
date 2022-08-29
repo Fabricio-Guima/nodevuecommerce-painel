@@ -5,6 +5,12 @@ import store from './store'
 
 import '@/plugins/vee-validate'
 import '@/plugins/axios'
+import Toasted from 'vue-toasted'
+
+const options = {
+  duration: 3000,
+}
+Vue.use(Toasted, options)
 
 Vue.config.productionTip = false
 

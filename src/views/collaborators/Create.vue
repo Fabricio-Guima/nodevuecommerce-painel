@@ -57,9 +57,9 @@
                 <!-- / .row -->
 
                 <!-- Alerta -->
-                <div v-if="response.message != ''" :class="response.color" role="alert">
+                <!-- <div v-if="response.message != ''" :class="response.color" role="alert">
                   {{ response.message }}
-                </div>
+                </div> -->
 
                 <div class="row align-items-center">
                   <div class="col">
@@ -234,10 +234,10 @@ export default {
         loading: false,
       },
 
-      response: {
-        color: '',
-        message: '',
-      },
+      // response: {
+      //   color: '',
+      //   message: '',
+      // },
     };
   },
   methods: {
@@ -261,28 +261,24 @@ export default {
         .post('/api/users', payload)
         .then((response) => {
           console.log('collaborador criado: ', response.data);
+          this.$toasted.success('Colaborador criado com sucesso');
 
-          this.response.message = 'Colaborador criado com sucesso';
-          this.response.color = 'alert alert-success';
           this.clearInputs();
           return;
         })
         .catch((error) => {
           this.spinner.login = false;
           console.log(error);
-          this.response.message = messages[error?.response?.data?.name];
-          this.response.color = 'alert alert-danger';
-          console.log('erro catch', this.response);
+          this.$toasted.error(messages[error?.response?.data?.name], {
+            class: 'toasting',
+          });
           return;
         })
         .finally(() => {
           this.spinner.loading = false;
         });
     },
-    resetResponse() {
-      this.response.color = '';
-      this.response.message = '';
-    },
+    resetResponse() {},
 
     clearInputs() {
       this.collaborator.name = '';
@@ -295,4 +291,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.toasting {
+  color: yellow !important;
+  font-size: 4rem !important;
+  background-color: pink !important;
+}
+</style>
