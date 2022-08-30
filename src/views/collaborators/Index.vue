@@ -106,9 +106,11 @@
                           >
                             <input
                               class="form-control list-search"
-                              type="search"
-                              placeholder="Search"
+                              type="text"
+                              placeholder="Buscar colaborador"
+                              v-model="filter"
                             />
+
                             <span class="input-group-text">
                               <i class="fe fe-search"></i>
                             </span>
@@ -118,8 +120,12 @@
 
                       <div class="col-auto">
                         <!-- Dropdown -->
-                        <button class="btn btn-sm btn-white" type="button">
-                          <i class="fe fe-sliders me-1"></i> Filter
+                        <button
+                          @click.stop.prevent="getAllUsers"
+                          class="btn btn-sm btn-white"
+                          type="button"
+                        >
+                          <i class="fe fe-sliders me-1"></i> Pesquisar
                           <span class="badge bg-primary ms-1 d-none">0</span>
                         </button>
                       </div>
@@ -151,6 +157,7 @@
                       </thead>
                       <!-- Pagination -->
                       <paginate
+                        v-bind="!spinner.loading"
                         ref="users"
                         tag="tbody"
                         name="users"
@@ -219,6 +226,13 @@
                           </td>
                         </tr>
                       </paginate>
+                      <tr v-if="spinner.loading">
+                        <td colspan="5" class="text-center">
+                          <div class="spinner-border text-primary my-5" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                        </td>
+                      </tr>
                     </table>
                   </div>
                   <div class="card-footer d-flex justify-content-between">
@@ -227,13 +241,13 @@
                       class="list-pagination-prev pagination pagination-tabs card-pagination"
                     >
                       <li class="page-item">
-                        <a
+                        <button
                           class="page-link ps-0 pe-4 border-end"
                           @click="goPrev"
                           style="cursor: pointer"
                         >
                           <i class="fe fe-arrow-left me-1"></i> Prev
-                        </a>
+                        </button>
                       </li>
                     </ul>
 
@@ -258,13 +272,13 @@
                       class="list-pagination-next pagination pagination-tabs card-pagination"
                     >
                       <li class="page-item">
-                        <a
+                        <button
+                          @click.stop="goNext"
                           class="page-link ps-4 pe-0 border-start"
-                          @click="goNext"
                           style="cursor: pointer"
                         >
                           Next <i class="fe fe-arrow-right ms-1"></i>
-                        </a>
+                        </button>
                       </li>
                     </ul>
                   </div>
@@ -286,18 +300,21 @@ export default {
   data() {
     return {
       users: [],
+
       spinner: {
         loading: false,
       },
       paginate: ['users'],
       currentPage: 1,
-      perPage: 2,
+      perPage: 15,
+      filter: '',
     };
   },
   methods: {
     async getAllUsers() {
+      this.spinner.loading = true;
       this.$axios
-        .get('/api/users')
+        .get(`/api/users/${this.filter}`)
         .then((response) => {
           console.log('users', response.data);
           this.users = response.data;
@@ -317,14 +334,14 @@ export default {
     },
     goPrev() {
       if (this.currentPage >= 2) {
-        return this.$refs.users.goToPage(this.currentPage--);
+        return this.$refs.users.goToPage(--this.currentPage);
       } else {
         return this.$refs.users.goToPage(1);
       }
     },
     goNext() {
       if (this.currentPage <= Math.ceil(this.users.length / this.perPage)) {
-        return this.$refs.users.goToPage(this.currentPage++);
+        return this.$refs.users.goToPage(++this.currentPage);
       } else {
         return this.$refs.users.goToPage(Math.ceil(this.users.length / this.perPage));
       }
