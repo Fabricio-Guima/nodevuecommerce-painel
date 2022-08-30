@@ -157,7 +157,6 @@
                       </thead>
                       <!-- Pagination -->
                       <paginate
-                        v-bind="!spinner.loading"
                         ref="users"
                         tag="tbody"
                         name="users"
@@ -165,7 +164,11 @@
                         :per="perPage"
                         class="list fs-base"
                       >
-                        <tr v-for="(user, index) in paginated('users')" :key="index">
+                        <tr
+                          v-if="!spinner.loading"
+                          v-for="(user, index) in paginated('users')"
+                          :key="index"
+                        >
                           <td>
                             <!-- Avatar -->
                             <div class="avatar avatar-xs align-middle me-2">
@@ -216,7 +219,15 @@
                                 <i class="fe fe-more-vertical"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#!" class="dropdown-item"> Action </a>
+                                <router-link
+                                  :to="{
+                                    name: 'collaborators.edit',
+                                    params: { id: user._id },
+                                  }"
+                                  class="dropdown-item"
+                                >
+                                  Editar
+                                </router-link>
                                 <a href="#!" class="dropdown-item"> Another action </a>
                                 <a href="#!" class="dropdown-item">
                                   Something else here
@@ -314,7 +325,7 @@ export default {
     async getAllUsers() {
       this.spinner.loading = true;
       this.$axios
-        .get(`/api/users/${this.filter}`)
+        .get(`/api/users-all/${this.filter}`)
         .then((response) => {
           console.log('users', response.data);
           this.users = response.data;

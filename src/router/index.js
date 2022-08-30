@@ -29,6 +29,18 @@ const routes = [
       },
 
       {
+        path: '/collaborators/edit/:id',
+        name: 'collaborators.edit',
+        props: true,
+
+        component: function () {
+          return import(
+            /* webpackChunkName: "collaborators.edit" */ '../views/collaborators/Edit.vue'
+          )
+        },
+      },
+
+      {
         path: '/collaborators/create',
         name: 'collaborators.create',
 
