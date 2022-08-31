@@ -228,10 +228,27 @@
                                 >
                                   Editar
                                 </router-link>
-                                <a href="#!" class="dropdown-item"> Another action </a>
-                                <a href="#!" class="dropdown-item">
-                                  Something else here
+
+                                <!-- Modal criar colaborador/user -->
+                                <a
+                                  style="cursor-pointer"
+                                  class="dropdown-item"
+                                  v-b-modal="'user-' + user._id"
+                                >
+                                  Desativar
                                 </a>
+                              </div>
+
+                              <div>
+                                <!-- Modal criar colaborador/user -->
+                                <b-modal
+                                  centered
+                                  :id="'user-' + user._id"
+                                  title="Criar colaborador"
+                                  title-html=" <h4 class='card-header-title'><b>Criar colaborador</b></h4>"
+                                >
+                                  <p class="my-4">{{ user._id }}</p>
+                                </b-modal>
                               </div>
                             </div>
                           </td>

@@ -8,8 +8,11 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "bootstrap-vue": "^2.22.0",
     "js-cookie": "^3.0.1",
     "vee-validate": "^3.4.12",
+    "vue": "^2.7.10",
     "vue-paginate": "^3.6.0",
     "vue-router": "^3.5.1",
     "vue-toasted": "^1.1.28",
