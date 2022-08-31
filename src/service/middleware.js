@@ -15,8 +15,9 @@ export default {
     // e volto para a tela de login, pois nao tem token
 
     await axios
-      .get('/auth/me')
+      .get('/api/me')
       .then(response => {
+        console.log('me front', response.data.user)
         if (!store?.state?.user?.id) {
           store.commit('user/STORE_USER', response.data.user)
           store.commit('user/STORE_USER_LOGGED', true)
@@ -24,6 +25,9 @@ export default {
       })
       .catch(() => {
         Cookie.deleteToken()
+        next({
+          name: 'login',
+        })
       })
 
     next()
@@ -33,7 +37,7 @@ export default {
     const token = Cookie.getToken()
     let n
     if (token) {
-      n = { name: 'home' }
+      n = { name: 'collaborators.index' }
     }
 
     //se n for vazio, ele vai seguir a rotina dele normalmente

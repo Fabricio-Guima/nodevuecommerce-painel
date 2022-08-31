@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout1 from '../layouts/Layout1.vue'
+import Guard from '@/service/middleware'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,7 @@ const routes = [
       {
         path: '/collaborators',
         name: 'collaborators.index',
+        beforeEnter: Guard.redirectIfNotAuthenticated,
 
         component: function () {
           return import(
@@ -31,6 +33,7 @@ const routes = [
       {
         path: '/collaborators/edit/:id',
         name: 'collaborators.edit',
+        beforeEnter: Guard.redirectIfNotAuthenticated,
         props: true,
 
         component: function () {
@@ -43,6 +46,7 @@ const routes = [
       {
         path: '/collaborators/create',
         name: 'collaborators.create',
+        beforeEnter: Guard.redirectIfNotAuthenticated,
 
         component: function () {
           return import(
@@ -55,6 +59,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    beforeEnter: Guard.redirectIfAutheticated,
     component: function () {
       return import(/* webpackChunkName: "login" */ '../views/Login.vue')
     },

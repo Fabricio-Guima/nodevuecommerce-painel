@@ -5,7 +5,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 <style>
 #app {
@@ -17,5 +17,9 @@ export default {};
 }
 a {
   color: #6e84a3 !important;
+}
+
+a.router-link-exact-active {
+  color: #2569c3 !important;
 }
 </style>
