@@ -19,7 +19,11 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="./index.html">
-        <img src="/assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="..." />
+        <img
+          src="/assets/img/logo.svg"
+          class="navbar-brand-img mx-auto"
+          alt="..."
+        />
       </a>
 
       <!-- User (xs) -->
@@ -47,7 +51,10 @@
           </a>
 
           <!-- Menu -->
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarIcon">
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="sidebarIcon"
+          >
             <a href="./profile-posts.html" class="dropdown-item">Profile</a>
             <a href="./account-general.html" class="dropdown-item">Settings</a>
             <hr class="dropdown-divider" />
@@ -94,12 +101,17 @@
                   <a href="./index.html" class="nav-link active"> Default </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./dashboard-project-management.html" class="nav-link">
+                  <a
+                    href="./dashboard-project-management.html"
+                    class="nav-link"
+                  >
                     Project Management
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./dashboard-ecommerce.html" class="nav-link"> E-Commerce </a>
+                  <a href="./dashboard-ecommerce.html" class="nav-link">
+                    E-Commerce
+                  </a>
                 </li>
               </ul>
             </div>
@@ -108,6 +120,12 @@
           <li class="nav-item">
             <router-link :to="{ name: 'collaborators.index' }" class="nav-link">
               <i class="fe fe-user"></i> Colaboradores
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'products.create' }" class="nav-link">
+              <i class="fe fe-shopping-cart"></i> Produtos
             </router-link>
           </li>
         </ul>
@@ -173,7 +191,9 @@
             <!-- Menu -->
             <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
               <a href="./profile-posts.html" class="dropdown-item">Profile</a>
-              <a href="./account-general.html" class="dropdown-item">Settings</a>
+              <a href="./account-general.html" class="dropdown-item"
+                >Settings</a
+              >
               <hr class="dropdown-divider" />
               <a href="./sign-in.html" class="dropdown-item">Logout</a>
             </div>
@@ -200,7 +220,7 @@
 <script>
 export default {
   name: 'Sidebar',
-};
+}
 </script>
 
 <style></style>

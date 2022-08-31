@@ -54,6 +54,18 @@ const routes = [
           )
         },
       },
+
+      {
+        path: '/products/create',
+        name: 'products.create',
+        beforeEnter: Guard.redirectIfNotAuthenticated,
+
+        component: function () {
+          return import(
+            /* webpackChunkName: "products.create" */ '../views/products/Create.vue'
+          )
+        },
+      },
     ],
   },
   {

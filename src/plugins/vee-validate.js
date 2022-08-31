@@ -1,28 +1,58 @@
-import { extend } from "vee-validate";
-import { required, email, regex, min, max } from "vee-validate/dist/rules";
-import { messages as messagePt } from "vee-validate/dist/locale/pt_BR";
+import { extend } from 'vee-validate'
+import {
+  required,
+  email,
+  regex,
+  min,
+  max,
+  image,
+  mimes,
+  size,
+  ext,
+} from 'vee-validate/dist/rules'
+import { messages as messagePt } from 'vee-validate/dist/locale/pt_BR'
 
-extend("required", {
+extend('required', {
   ...required,
-  message: messagePt.required
-});
+  message: messagePt.required,
+})
 
-extend("email", {
+extend('email', {
   ...email,
-  message: messagePt.email
-});
+  message: messagePt.email,
+})
 
-extend("regex", {
+extend('regex', {
   ...regex,
-  message: messagePt.regex
-});
+  message: messagePt.regex,
+})
 
-extend("min", {
+extend('min', {
   ...min,
-  message: messagePt.regex
-});
+  message: messagePt.regex,
+})
 
-extend("max", {
+extend('max', {
   ...max,
-  message: messagePt.regex
-});
+  message: messagePt.regex,
+})
+
+extend('image', {
+  ...image,
+  message: messagePt.regex,
+})
+
+extend('mimes', {
+  ...mimes,
+  message: messagePt.regex,
+})
+
+extend('size', {
+  ...size,
+  message: messagePt.regex,
+})
+
+extend('ext', {
+  ...ext,
+  message: messagePt.regex,
+})
