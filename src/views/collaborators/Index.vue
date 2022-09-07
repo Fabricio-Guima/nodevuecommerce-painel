@@ -30,9 +30,7 @@
               <!-- Menu -->
               <div class="dropdown-menu dropdown-menu-end">
                 <a href="./profile-posts.html" class="dropdown-item">Profile</a>
-                <a href="./account-general.html" class="dropdown-item"
-                  >Settings</a
-                >
+                <a href="./account-general.html" class="dropdown-item">Settings</a>
                 <hr class="dropdown-divider" />
                 <a href="./sign-in.html" class="dropdown-item">Logout</a>
               </div>
@@ -135,16 +133,11 @@
                     <!-- / .row -->
                   </div>
                   <div class="table-responsive">
-                    <table
-                      class="table table-sm table-hover table-nowrap card-table"
-                    >
+                    <table class="table table-sm table-hover table-nowrap card-table">
                       <thead>
                         <tr>
                           <th>
-                            <a
-                              class="list-sort text-muted"
-                              data-sort="item-name"
-                              href="#"
+                            <a class="list-sort text-muted" data-sort="item-name" href="#"
                               >Nomes</a
                             >
                           </th>
@@ -185,9 +178,7 @@
                                 alt="..."
                               />
                             </div>
-                            <a
-                              class="item-name text-reset"
-                              href="profile-posts.html"
+                            <a class="item-name text-reset" href="profile-posts.html"
                               >{{ user.name }} {{ user.nickname }}</a
                             >
                           </td>
@@ -197,9 +188,7 @@
                           </td>
                           <td>
                             <!-- Email -->
-                            <a class="item-email text-reset">{{
-                              user.email
-                            }}</a>
+                            <a class="item-email text-reset">{{ user.email }}</a>
                           </td>
 
                           <td>
@@ -268,10 +257,7 @@
                       </paginate>
                       <tr v-if="spinner.loading">
                         <td colspan="5" class="text-center">
-                          <div
-                            class="spinner-border text-primary my-5"
-                            role="status"
-                          >
+                          <div class="spinner-border text-primary my-5" role="status">
                             <span class="visually-hidden">Loading...</span>
                           </div>
                         </td>
@@ -351,75 +337,70 @@ export default {
       currentPage: 1,
       perPage: 15,
       filter: '',
-    }
+    };
   },
   computed: {
     userStatus() {
-      return status => (status ? 'Desativar' : 'Ativar')
+      return (status) => (status ? 'Desativar' : 'Ativar');
     },
   },
   methods: {
     async getAllUsers() {
-      this.spinner.loading = true
+      this.spinner.loading = true;
       this.$axios
         .get(`/api/users-all/${this.filter}`)
-        .then(response => {
-          console.log('users', response.data)
-          this.users = response.data
+        .then((response) => {
+          console.log('users', response.data);
+          this.users = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toasted.error(error.message, {
             class: 'toasting',
-          })
+          });
         })
         .finally(() => {
-          this.spinner.loading = false
-        })
+          this.spinner.loading = false;
+        });
     },
 
     onLangsPageChange(toPage, fromPage) {
-      this.currentPage = toPage
+      this.currentPage = toPage;
     },
     goPrev() {
       if (this.currentPage >= 2) {
-        return this.$refs.users.goToPage(--this.currentPage)
+        return this.$refs.users.goToPage(--this.currentPage);
       } else {
-        return this.$refs.users.goToPage(1)
+        return this.$refs.users.goToPage(1);
       }
     },
     goNext() {
       if (this.currentPage <= Math.ceil(this.users.length / this.perPage)) {
-        return this.$refs.users.goToPage(++this.currentPage)
+        return this.$refs.users.goToPage(++this.currentPage);
       } else {
-        return this.$refs.users.goToPage(
-          Math.ceil(this.users.length / this.perPage)
-        )
+        return this.$refs.users.goToPage(Math.ceil(this.users.length / this.perPage));
       }
     },
     async updateStatusUser(id, status) {
       this.$axios
         .put(`/api/users/${id}/status`, { status })
         .then(() => {
-          this.getAllUsers()
+          this.getAllUsers();
           this.$toasted.error(error.message, {
             class: 'toasting',
-          })
+          });
         })
-        .catch(error => {
-          this.$toasted.success(
-            'Status do colaborador atualizado com sucesso',
-            {
-              class: 'toasting',
-            }
-          )
+        .catch((error) => {
+          this.$toasted.success('Status do colaborador atualizado com sucesso', {
+            class: 'toasting',
+          });
         })
-        .finally(() => {})
+        .finally(() => {});
     },
   },
   created() {
-    this.getAllUsers()
+    this.getAllUsers();
   },
-}
+};
 </script>
 
 <style></style>
