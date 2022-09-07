@@ -30,9 +30,7 @@
               <!-- Menu -->
               <div class="dropdown-menu dropdown-menu-end">
                 <a href="./profile-posts.html" class="dropdown-item">Profile</a>
-                <a href="./account-general.html" class="dropdown-item"
-                  >Settings</a
-                >
+                <a href="./account-general.html" class="dropdown-item">Settings</a>
                 <hr class="dropdown-divider" />
                 <a href="./sign-in.html" class="dropdown-item">Logout</a>
               </div>
@@ -68,10 +66,7 @@
                     <!-- Nav -->
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                       <li class="nav-item">
-                        <router-link
-                          :to="{ name: 'products.index' }"
-                          class="nav-link"
-                        >
+                        <router-link :to="{ name: 'products.index' }" class="nav-link">
                           Todos os produtos
                         </router-link>
                       </li>
@@ -94,6 +89,7 @@
               tag="form"
               @submit.stop.prevent="create"
               class="position-relative"
+              enctype="multipart/form-data"
             >
               <div class="row justify-content-between align-items-center">
                 <div class="col">
@@ -115,9 +111,7 @@
                       </h4>
 
                       <!-- Text -->
-                      <small class="text-muted">
-                        PNG ou JPG menor que 1024kbs.
-                      </small>
+                      <small class="text-muted"> PNG ou JPG menor que 1024kbs. </small>
                     </div>
                   </div>
                   <!-- / .row -->
@@ -125,9 +119,7 @@
                 <div class="col-auto">
                   <!-- Button -->
 
-                  <label for="file-upload" class="btn btn-sm btn-primary">
-                    Upload
-                  </label>
+                  <label for="file-upload" class="btn btn-sm btn-primary"> Upload </label>
                   <ValidationProvider
                     v-slot="{ errors, validate }"
                     rules="required|ext:jpg,png|mimes:image/jpeg,image/png|size:1050"
@@ -198,11 +190,7 @@
                       rules="required"
                       name="categoria"
                     >
-                      <select
-                        name=""
-                        class="form-select"
-                        v-model="product.category"
-                      >
+                      <select name="" class="form-select" v-model="product.category">
                         <option value="" disabled selected>Selecionar</option>
                         <option value="Categoria 1">Categoria 1</option>
                         <option value="Categoria 2">Categoria 2</option>
@@ -221,11 +209,7 @@
                     <label class="form-label"> Preço </label>
 
                     <!-- Input -->
-                    <ValidationProvider
-                      v-slot="{ errors }"
-                      rules="required"
-                      name="preço"
-                    >
+                    <ValidationProvider v-slot="{ errors }" rules="required" name="preço">
                       <input
                         type="number"
                         class="form-control"
@@ -243,12 +227,12 @@
                   <!-- Phone -->
                   <div class="form-group">
                     <!-- Label -->
-                    <label class="form-label"> Extrato </label>
+                    <label class="form-label"> Descrição </label>
 
                     <ValidationProvider
                       v-slot="{ errors }"
                       rules="required"
-                      name="extrato"
+                      name="descrição"
                     >
                       <!-- Input -->
                       <textarea
@@ -256,7 +240,7 @@
                         id=""
                         rows="3"
                         placeholder="Extrato"
-                        v-model="product.extract"
+                        v-model="product.description"
                       ></textarea>
                       <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
                         {{ errors[0] }}
@@ -276,8 +260,8 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      Making your profile public means that anyone on the
-                      Dashkit network will be able to find you.
+                      Making your profile public means that anyone on the Dashkit network
+                      will be able to find you.
                     </small>
 
                     <div class="row">
@@ -296,17 +280,11 @@
                               v-model="product.state"
                             />
 
-                            <div
-                              v-if="!!errors[0]"
-                              class="text-danger text-sm mt-2"
-                            >
+                            <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
                               {{ errors[0] }}
                             </div>
                           </ValidationProvider>
-                          <label
-                            class="form-check-label"
-                            for="switchOne"
-                          ></label>
+                          <label class="form-check-label" for="switchOne"></label>
                         </div>
                       </div>
                       <div class="col ms-n2">
@@ -325,8 +303,8 @@
 
                     <!-- Form text -->
                     <small class="form-text text-muted">
-                      If you are available for hire outside of the current
-                      situation, you can encourage others to hire you.
+                      If you are available for hire outside of the current situation, you
+                      can encourage others to hire you.
                     </small>
 
                     <div class="row">
@@ -345,17 +323,11 @@
                               v-model="product.discount"
                             />
 
-                            <div
-                              v-if="!!errors[0]"
-                              class="text-danger text-sm mt-2"
-                            >
+                            <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
                               {{ errors[0] }}
                             </div>
                           </ValidationProvider>
-                          <label
-                            class="form-check-label"
-                            for="switchTwo"
-                          ></label>
+                          <label class="form-check-label" for="switchTwo"></label>
                         </div>
                       </div>
                       <div class="col ms-n2">
@@ -373,9 +345,7 @@
               <hr class="mt-4 mb-5" />
 
               <!-- Button -->
-              <button type="submit" class="btn btn-primary">
-                Criar produto
-              </button>
+              <button type="submit" class="btn btn-primary">Criar produto</button>
             </ValidationObserver>
 
             <br /><br />
@@ -388,8 +358,8 @@
 </template>
 
 <script>
-import { ValidationObserver, ValidationProvider } from 'vee-validate'
-import messages from '@/utils/messages'
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import messages from '@/utils/messages';
 export default {
   components: {
     ValidationObserver,
@@ -403,7 +373,7 @@ export default {
         state: 'true',
         discount: 'true',
         price: '100',
-        extract: 'adffgd',
+        description: 'adffgd',
       },
       image: undefined,
       spinner: {
@@ -411,28 +381,28 @@ export default {
       },
 
       str_image: '/assets/img/default.jpg',
-    }
+    };
   },
   methods: {
     async create() {
-      const validator = await this.$refs.createForm.validate()
+      const validator = await this.$refs.createForm.validate();
       if (!validator) {
-        return
+        return;
       }
 
-      console.log('imagem indo subir para o back')
-      console.log('uploadImage e refs', this.$refs.uploadImage.files[0])
+      console.log('imagem indo subir para o back');
+      console.log('uploadImage e refs', this.$refs.uploadImage.files[0]);
 
-      this.spinner.loading = true
+      this.spinner.loading = true;
 
-      const form = FormData()
-      form.append('name', this.product.name)
-      form.append('category', this.product.category)
-      form.append('state', this.product.state)
-      form.append('discount', this.product.discount)
-      form.append('price', this.product.price)
-      form.append('extract', this.product.extract)
-      form.append('image', str_image)
+      const form = new FormData();
+      form.append('name', this.product.name);
+      form.append('category', this.product.category);
+      form.append('state', this.product.state);
+      form.append('discount', this.product.discount);
+      form.append('price', this.product.price);
+      form.append('description', this.product.description);
+      form.append('image', this.$refs.uploadImage.files[0]);
 
       // const payload = {
       //   name: this.collaborator.name,
@@ -443,41 +413,41 @@ export default {
 
       this.$axios
         .post('/api/products', form)
-        .then(response => {
-          console.log('collaborador criado: ', response.data)
-          this.$toasted.success('Colaborador criado com sucesso')
+        .then((response) => {
+          console.log('collaborador criado: ', response.data);
+          this.$toasted.success('Colaborador criado com sucesso');
 
-          this.clearInputs()
-          return
+          this.clearInputs();
+          return;
         })
-        .catch(error => {
-          this.spinner.login = false
-          console.log(error)
+        .catch((error) => {
+          this.spinner.login = false;
+          console.log(error);
           this.$toasted.error(messages[error?.response?.data?.name], {
             class: 'toasting',
-          })
-          return
+          });
+          return;
         })
         .finally(() => {
-          this.spinner.loading = false
-        })
+          this.spinner.loading = false;
+        });
     },
     async uploadImagePreview($event) {
-      console.log('uploadImage e refs', $event.target.files[0])
+      console.log('uploadImage e refs', $event.target.files[0]);
 
       //mostrar imagem (prévia)
-      this.str_image = URL.createObjectURL(this.$refs.uploadImage.files[0])
+      this.str_image = URL.createObjectURL(this.$refs.uploadImage.files[0]);
     },
 
     clearInputs() {
-      this.collaborator.name = ''
-      this.collaborator.nickname = ''
-      this.collaborator.email = ''
-      this.collaborator.role = ''
-      this.$refs.createForm.reset()
+      this.collaborator.name = '';
+      this.collaborator.nickname = '';
+      this.collaborator.email = '';
+      this.collaborator.role = '';
+      this.$refs.createForm.reset();
     },
   },
-}
+};
 </script>
 
 <style>
