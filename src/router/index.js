@@ -77,6 +77,19 @@ const routes = [
           )
         },
       },
+
+      {
+        path: '/products/edit/:id',
+        name: 'products.edit',
+        props: true,
+        beforeEnter: Guard.redirectIfNotAuthenticated,
+
+        component: function () {
+          return import(
+            /* webpackChunkName: "products.edit" */ '../views/products/Edit.vue'
+          )
+        },
+      },
     ],
   },
   {

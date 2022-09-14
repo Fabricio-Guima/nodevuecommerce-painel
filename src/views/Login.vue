@@ -10,34 +10,20 @@
           <h1 class="display-4 text-center mb-3">Sign in</h1>
 
           <!-- Subheading -->
-          <p class="text-muted text-center mb-5">
-            Free access to our dashboard.
-          </p>
+          <p class="text-muted text-center mb-5">Free access to our dashboard.</p>
           <!-- Alerta -->
-          <div
-            v-if="error.message != ''"
-            class="alert alert-danger"
-            role="alert"
-          >
+          <div v-if="error.message != ''" class="alert alert-danger" role="alert">
             {{ error.message }}
           </div>
 
           <!-- Form -->
-          <ValidationObserver
-            ref="loginForm"
-            tag="form"
-            @submit.stop.prevent="login"
-          >
+          <ValidationObserver ref="loginForm" tag="form" @submit.stop.prevent="login">
             <!-- Email address -->
             <div class="form-group">
               <!-- Label -->
               <label class="form-label"> Email Address </label>
 
-              <ValidationProvider
-                v-slot="{ errors }"
-                rules="required|email"
-                name="email"
-              >
+              <ValidationProvider v-slot="{ errors }" rules="required|email" name="email">
                 <!-- Input -->
                 <input
                   v-model="form.email"
@@ -60,10 +46,7 @@
                 </div>
                 <div class="col-auto">
                   <!-- Help text -->
-                  <a
-                    href="password-reset-cover.html"
-                    class="form-text small text-muted"
-                  >
+                  <a href="password-reset-cover.html" class="form-text small text-muted">
                     Forgot password?
                   </a>
                 </div>
@@ -73,11 +56,7 @@
               <!-- Input group -->
               <div class="">
                 <!-- Input -->
-                <ValidationProvider
-                  v-slot="{ errors }"
-                  rules="required"
-                  name="password"
-                >
+                <ValidationProvider v-slot="{ errors }" rules="required" name="password">
                   <input
                     v-model="form.password"
                     class="form-control"
@@ -126,9 +105,9 @@
 </template>
 
 <script>
-import Cookie from '@/service/cookie'
-import messages from '@/utils/messages'
-import { ValidationObserver, ValidationProvider } from 'vee-validate'
+import Cookie from '@/service/cookie';
+import messages from '@/utils/messages';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
   name: 'Login',
   components: {
@@ -149,59 +128,59 @@ export default {
         color: '',
         message: '',
       },
-    }
+    };
   },
   methods: {
     async login() {
-      console.log('metodo login')
+      console.log('metodo login');
       //se tiver erro de validação, validator vira false
-      const validator = await this.$refs.loginForm.validate()
+      const validator = await this.$refs.loginForm.validate();
       if (!validator) {
-        return
+        return;
       }
 
-      this.resetResponse()
-      this.spinner.loading = true
+      this.resetResponse();
+      this.spinner.loading = true;
 
       const payload = {
         email: this.form.email,
         password: this.form.password,
-      }
+      };
 
       this.$axios
         .post('/api/login', payload)
-        .then(response => {
-          console.log('login: ', response.data.user)
-          console.log('token: ', response.data.token)
-          const token = response.data.token
+        .then((response) => {
+          console.log('login: ', response.data.user);
+          console.log('token: ', response.data.token);
+          const token = response.data.token;
 
-          Cookie.setToken(token)
+          Cookie.setToken(token);
 
-          this.$store.commit('user/STORE_USER', response.data.user)
-          this.$store.commit('user/STORE_USER_LOGGED', true)
+          this.$store.commit('user/STORE_USER', response.data.user);
+          this.$store.commit('user/STORE_USER_LOGGED', true);
 
-          this.$router.push({ name: 'collaborators.index' })
+          this.$router.push({ name: 'collaborators.index' });
         })
-        .catch(error => {
-          this.spinner.login = false
-          console.log(error)
+        .catch((error) => {
+          this.spinner.login = false;
+          console.log(error);
           // const errorCode = e?.response?.data?.error || 'ServerError'
           this.$toasted.error(messages[error?.response?.data?.name], {
             class: 'toasting',
-          })
+          });
           // this.error.message = messages[error?.response?.data?.name];
           // this.error.color = 'danger';
         })
         .finally(() => {
-          this.spinner.loading = false
-        })
+          this.spinner.loading = false;
+        });
     },
     resetResponse() {
-      this.error.color = ''
-      this.error.message = ''
+      this.error.color = '';
+      this.error.message = '';
     },
   },
-}
+};
 </script>
 
 <style></style>

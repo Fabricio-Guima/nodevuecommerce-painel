@@ -87,11 +87,6 @@
                   <div class="card-header">
                     <!-- Title -->
                     <h4 class="card-header-title">Produtos</h4>
-
-                    <!-- Button -->
-                    <a href="#!" class="btn btn-sm btn-primary text-white">
-                      Novo produto
-                    </a>
                   </div>
                   <div class="card-header">
                     <div
@@ -102,24 +97,42 @@
                         class="form-control list-search"
                         type="search"
                         placeholder="Pesquisar produto"
+                        v-model="filter"
+                        @keyup.enter="getAllProducts"
                       />
 
                       <!-- Prepend -->
-                      <div class="input-group-text">
+                      <div
+                        class="input-group-text"
+                        style="cursor: pointer"
+                        @click="getAllProducts"
+                      >
                         <span class="fe fe-search"></span>
                       </div>
                     </div>
                   </div>
-                  <div class="card-body">
+                  <div
+                    class="card-body"
+                    :class="[spinner.loading ? 'd-flex justify-content-center' : '']"
+                  >
                     <!-- List -->
-                    <ul class="list-group list-group-lg list-group-flush list my-n4">
-                      <li class="list-group-item" v-for="item in products">
+
+                    <Loading :loading="spinner.loading" />
+                    <ul
+                      id="my-table"
+                      class="list-group list-group-lg list-group-flush list my-n4"
+                    >
+                      <li
+                        class="list-group-item"
+                        v-for="item in itemForList"
+                        v-if="!spinner.loading"
+                      >
                         <div class="row align-items-center">
                           <div class="col-auto">
                             <!-- Avatar -->
                             <a href="#!" class="avatar avatar-lg">
                               <img
-                                :src="'/obtener_portada_producto/' + item.image"
+                                :src="item.image"
                                 alt="..."
                                 class="avatar-img rounded"
                               />
@@ -173,7 +186,15 @@
                                 <i class="fe fe-more-vertical"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#!" class="dropdown-item"> Action </a>
+                                <router-link
+                                  :to="{
+                                    name: 'products.edit',
+                                    params: { id: item._id },
+                                  }"
+                                  class="dropdown-item"
+                                  >Editar</router-link
+                                >
+
                                 <a href="#!" class="dropdown-item"> Another action </a>
                                 <a href="#!" class="dropdown-item">
                                   Something else here
@@ -185,6 +206,14 @@
                         <!-- / .row -->
                       </li>
                     </ul>
+                  </div>
+                  <div class="card-footer">
+                    <b-pagination
+                      v-model="currentPage"
+                      :total-rows="products.length"
+                      :per-page="perPage"
+                      aria-controls="my-table"
+                    ></b-pagination>
                   </div>
                 </div>
               </div>
@@ -202,18 +231,26 @@
 <script>
 import moment from 'moment';
 import currency_formatter from 'currency-formatter';
+import Loading from '@/components/Loading';
 export default {
+  components: {
+    Loading,
+  },
   data() {
     return {
       products: [],
-
       spinner: {
         loading: false,
       },
-      paginate: ['products'],
       currentPage: 1,
-      perPage: 15,
+      perPage: 2,
       filter: '',
+      get itemForList() {
+        return this.products.slice(
+          (this.currentPage - 1) * this.perPage,
+          this.currentPage * this.perPage
+        );
+      },
     };
   },
   computed: {
