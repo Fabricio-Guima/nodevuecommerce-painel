@@ -206,6 +206,30 @@
                   <!-- Last name -->
                   <div class="form-group">
                     <!-- Label -->
+                    <label class="form-label"> Variedade </label>
+
+                    <!-- Input -->
+                    <ValidationProvider
+                      v-slot="{ errors }"
+                      rules="required"
+                      name="variedade"
+                    >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Variedade"
+                        v-model="product.variety"
+                      />
+                      <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
+                        {{ errors[0] }}
+                      </div>
+                    </ValidationProvider>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <!-- Last name -->
+                  <div class="form-group">
+                    <!-- Label -->
                     <label class="form-label"> Preço </label>
 
                     <!-- Input -->
@@ -213,7 +237,7 @@
                       <input
                         type="number"
                         class="form-control"
-                        placeholder="Precio"
+                        placeholder="Preço"
                         v-model="product.price"
                       />
                       <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
@@ -345,7 +369,16 @@
               <hr class="mt-4 mb-5" />
 
               <!-- Button -->
-              <button type="submit" class="btn btn-primary">Criar produto</button>
+              <button type="submit" class="btn btn-primary" :disabled="spinner.loading">
+                <img
+                  v-if="spinner.loading"
+                  src="@/assets/img/spinner.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                  class="d-inline-block"
+                />Criar produto
+              </button>
             </ValidationObserver>
 
             <br /><br />
@@ -368,12 +401,13 @@ export default {
   data() {
     return {
       product: {
-        name: 'a',
-        category: 'Categoria 1',
-        state: 'true',
-        discount: 'true',
-        price: '100',
-        description: 'adffgd',
+        name: '',
+        category: '',
+        state: '',
+        discount: '',
+        variety: '',
+        price: '',
+        description: '',
       },
       image: undefined,
       spinner: {
@@ -390,6 +424,8 @@ export default {
         return;
       }
 
+      this.spinner.loading = true;
+
       console.log('imagem indo subir para o back');
       console.log('uploadImage e refs', this.$refs.uploadImage.files[0]);
 
@@ -400,6 +436,7 @@ export default {
       form.append('category', this.product.category);
       form.append('state', this.product.state);
       form.append('discount', this.product.discount);
+      form.append('variety', this.product.variety);
       form.append('price', this.product.price);
       form.append('description', this.product.description);
       form.append('image', this.$refs.uploadImage.files[0]);
@@ -414,9 +451,10 @@ export default {
       this.$axios
         .post('/api/products', form)
         .then((response) => {
-          console.log('collaborador criado: ', response.data);
-          this.$toasted.success('Colaborador criado com sucesso');
+          console.log('Produto criado: ', response.data);
+          this.$toasted.success('Produto criado com sucesso');
 
+          this.$router.push({ name: 'products.index' });
           this.clearInputs();
           return;
         })

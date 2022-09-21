@@ -6,7 +6,6 @@
           <!-- Form -->
           <form class="form-inline me-4 d-none d-md-flex"></form>
 
-          {{ product }}
           <!-- User -->
           <div class="navbar-user">
             <!-- Dropdown -->
@@ -205,6 +204,32 @@
                     </ValidationProvider>
                   </div>
                 </div>
+
+                <div class="col-12 col-md-6">
+                  <!-- Last name -->
+                  <div class="form-group">
+                    <!-- Label -->
+                    <label class="form-label"> Variedade </label>
+
+                    <!-- Input -->
+                    <ValidationProvider
+                      v-slot="{ errors }"
+                      rules="required"
+                      name="variedade"
+                    >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Variedade"
+                        v-model="product.variety"
+                      />
+                      <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
+                        {{ errors[0] }}
+                      </div>
+                    </ValidationProvider>
+                  </div>
+                </div>
+
                 <div class="col-12 col-md-6">
                   <!-- Last name -->
                   <div class="form-group">
@@ -216,7 +241,7 @@
                       <input
                         type="number"
                         class="form-control"
-                        placeholder="Precio"
+                        placeholder="Preço"
                         v-model="product.price"
                       />
                       <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
@@ -268,7 +293,7 @@
                     </small>
 
                     <div class="row">
-                      <div class="col-auto">
+                      <div class="col-auto col-md-6">
                         <!-- Switch -->
                         <div class="form-check form-switch">
                           <ValidationProvider
@@ -361,6 +386,114 @@
             </ValidationObserver>
 
             <br /><br />
+
+            <div class="row justify-content-between align-items-center mb-5">
+              <div class="col-12">
+                <!-- Heading -->
+                <h2 class="mb-2">Variedades do produto</h2>
+
+                <!-- Text -->
+                <p class="text-muted mb-xl-0">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolore
+                  aspernatur, beatae id quod consequuntur.
+                </p>
+              </div>
+            </div>
+
+            <div class="row mb-5">
+              <div class="col-lg-5">
+                <small class="text-muted"> Fornecedor </small>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Empresa fornecedora"
+                />
+              </div>
+              <div class="col-lg-5">
+                <small class="text-muted"> Variedade </small>
+                <input type="text" class="form-control" placeholder="Tamanho, cores..." />
+              </div>
+              <div class="col">
+                <small class="text-muted"> Ação* </small> <br />
+                <button class="btn btn-primary btn-block" style="width: 100% !important">
+                  Adicionar
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <!-- List group -->
+                <div class="list-group list-group-flush my-n3">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <!-- Heading -->
+                        <h4 class="mb-1">Authenticator app</h4>
+
+                        <!-- Text -->
+                        <small class="text-muted"> Google auth or 1Password </small>
+                      </div>
+                      <div class="col-auto">
+                        <!-- Button -->
+                        <button class="btn btn-sm btn-white">Setup</button>
+                      </div>
+                    </div>
+                    <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <!-- Heading -->
+                        <h4 class="mb-1">
+                          SMS Recovery
+                          <i
+                            class="fe fe-info text-muted ms-1"
+                            data-bs-toggle="tooltip"
+                            data-title="We use the the phone number you provide in General"
+                            data-bs-original-title=""
+                            title=""
+                          ></i>
+                        </h4>
+
+                        <!-- Text -->
+                        <small class="text-muted"> Standard messaging rates apply </small>
+                      </div>
+                      <div class="col-auto">
+                        <!-- Button -->
+                        <button class="btn btn-sm btn-danger">Disable</button>
+                      </div>
+                    </div>
+                    <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <!-- Heading -->
+                        <h4 class="mb-1">
+                          Recovery codes
+                          <i
+                            class="fe fe-info text-muted ms-1"
+                            data-bs-toggle="tooltip"
+                            data-title="We use the the phone number you provide in General"
+                            data-bs-original-title=""
+                            title=""
+                          ></i>
+                        </h4>
+
+                        <!-- Text -->
+                        <small class="text-muted"> Standard messaging rates apply </small>
+                      </div>
+                      <div class="col-auto">
+                        <!-- Button -->
+                        <button class="btn btn-sm btn-white">Reveal</button>
+                      </div>
+                    </div>
+                    <!-- / .row -->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- / .row -->
@@ -390,6 +523,7 @@ export default {
         category: '',
         status: '',
         discount: '',
+        variety: '',
         price: '',
         description: '',
       },
@@ -432,6 +566,7 @@ export default {
       form.append('category', this.product.category);
       form.append('status', this.product.status);
       form.append('discount', this.product.discount);
+      form.append('variety', this.product.variety);
       form.append('price', this.product.price);
       form.append('description', this.product.description);
       form.append('image', this.$refs.uploadImage.files[0]);
