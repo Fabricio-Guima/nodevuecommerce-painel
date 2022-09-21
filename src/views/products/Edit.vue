@@ -67,7 +67,7 @@
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                       <li class="nav-item">
                         <router-link :to="{ name: 'products.index' }" class="nav-link">
-                          Todos os produtos {{ varieties }}
+                          Todos os produtos
                         </router-link>
                       </li>
                       <li class="nav-item">
