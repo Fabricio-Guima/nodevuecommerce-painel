@@ -243,7 +243,7 @@ export default {
         loading: false,
       },
       currentPage: 1,
-      perPage: 2,
+      perPage: 15,
       filter: '',
       get itemForList() {
         return this.products.slice(

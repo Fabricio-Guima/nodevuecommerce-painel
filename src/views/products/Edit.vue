@@ -67,7 +67,7 @@
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                       <li class="nav-item">
                         <router-link :to="{ name: 'products.index' }" class="nav-link">
-                          Todos os produtos
+                          Todos os produtos {{ varieties }}
                         </router-link>
                       </li>
                       <li class="nav-item">
@@ -400,26 +400,56 @@
               </div>
             </div>
 
-            <div class="row mb-5">
+            <ValidationObserver
+              ref="createVarietyForm"
+              tag="form"
+              @submit.stop.prevent="createVariety"
+              class="row mb-5"
+            >
               <div class="col-lg-5">
                 <small class="text-muted"> Fornecedor </small>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Empresa fornecedora"
-                />
+                <ValidationProvider
+                  v-slot="{ errors }"
+                  rules="required"
+                  name="fornecedor"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Fornecedor"
+                    v-model="variety.provider"
+                  />
+                  <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
               </div>
               <div class="col-lg-5">
                 <small class="text-muted"> Variedade </small>
-                <input type="text" class="form-control" placeholder="Tamanho, cores..." />
+
+                <ValidationProvider v-slot="{ errors }" rules="required" name="variedade">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Tamanho, cores..."
+                    v-model="variety.variety"
+                  />
+                  <div v-if="!!errors[0]" class="text-danger text-sm mt-2">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
               </div>
               <div class="col">
                 <small class="text-muted"> Ação* </small> <br />
-                <button class="btn btn-primary btn-block" style="width: 100% !important">
+                <button
+                  class="btn btn-primary btn-block"
+                  style="width: 100% !important"
+                  type="submit"
+                >
                   Adicionar
                 </button>
               </div>
-            </div>
+            </ValidationObserver>
 
             <div class="card">
               <div class="card-body">
@@ -527,6 +557,9 @@ export default {
         price: '',
         description: '',
       },
+      varieties: [],
+      variety: {},
+      sku: '',
       image: undefined,
       spinner: {
         loading: false,
@@ -597,9 +630,68 @@ export default {
       //mostrar imagem (prévia)
       this.product.image = URL.createObjectURL(this.$refs.uploadImage.files[0]);
     },
+
+    async createVariety() {
+      this.variety.product = this.id;
+      this.variety.sku = await this.generateSku();
+
+      this.$axios
+        .post(`/api/varieties`, this.variety)
+        .then((response) => {
+          console.log('variedade criada: ', response.data);
+          this.$toasted.success('variedade criada com sucesso');
+          this.resetFieldsVariety();
+
+          return;
+        })
+        .catch((error) => {
+          this.spinner.login = false;
+          console.log(error);
+          this.$toasted.error(messages[error?.response?.data?.name], {
+            class: 'toasting',
+          });
+          return;
+        });
+    },
+
+    async generateSku() {
+      let sku =
+        this.product.name.substring(0, 3) +
+        '' +
+        this.product.variety +
+        '' +
+        this.variety.variety +
+        '' +
+        this.variety.provider;
+
+      return sku.toUpperCase();
+    },
+
+    resetFieldsVariety() {
+      this.variety = {};
+      this.$refs.createVarietyForm.reset();
+    },
+
+    async getVarietiesProduct() {
+      this.$axios
+        .get(`/api/varieties/${this.id}`)
+        .then((response) => {
+          this.varieties = response.data;
+        })
+        .catch((error) => {
+          this.spinner.login = false;
+          console.log(error);
+          this.$toasted.error(messages[error?.response?.data?.name], {
+            class: 'toasting',
+          });
+          return;
+        });
+    },
   },
+
   created() {
     this.getProductById();
+    this.getVarietiesProduct();
   },
 };
 </script>
